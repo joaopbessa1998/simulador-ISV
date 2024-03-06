@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/simulador.css">
+    <script src="/simulador.js"></script>
+    <title>simuladorISVnovonovo</title>
+</head>
+
+<body>
+    <main>
+        <section id="simulador">
+            <div class="row flex">
+                <div class="row_inner">
+                    <fieldset>
+                        <legend>País da Matrícula do Veículo</legend>
+                        <select id="escolhaPais">
+                            <option selected disabled>Selecione</option>
+                            <option value="estadoMembro">Estado-Membro da União Europeia</option>
+                            <option value="paisTerceiro">País Terceiro</option>
+                        </select>
+                    </fieldset>
+                </div>
+                <div class="row_inner">
+                    <fieldset>
+                        <legend>Tipo de Veículo</legend>
+                        <select id="escolhaTipo">
+                            <option selected disabled>Selecione</option>
+                            <option value="ligeiro">Ligeiro de passageiros (100%)</option>
+                            <option value="monovolume">Monovolumes de passageiros (40%)</option>
+                            <option value="gasNatural">Exclusivamente a gás natural (40%)</option>
+                            <option value="naoConvencional">Passageiros não convencionais (100%)</option>
+                            <option value="hibrido">Veículos híbridos (60%)</option>
+                            <option value="eletrico">Elétricos (Isento)</option>
+                            <option value="hibridoPlugin">Híbridos Plug-in (25%)</option>
+                            <option value="taxi">Táxis (30%)</option>
+                            <option value="classico">Veículos fabricados até 1969 (100%)</option>
+                        </select>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row flex">
+                <div class="row_inner flex">
+                    <div>
+                        <fieldset>
+                            <legend>Novo / Usado</legend>
+                            <select id="escolhaEstado">
+                                <option selected disabled>Selecione</option>
+                                <option value="novo">Novo</option>
+                                <option value="usado">Usado</option>
+                            </select>
+                        </fieldset>
+                    </div>
+                    <div>
+                        <fieldset style="height: 100%;">
+                            <legend>Data Registo</legend>
+                            <select id="escolhaIdade">
+                                <option disabled selected>Selecione</option>
+                                <option value="1">Até 1 ano</option>
+                                <option value="2">1 a 2 anos</option>
+                                <option value="3">2 a 3 anos</option>
+                                <option value="4">3 a 4 anos</option>
+                                <option value="5">4 a 5 anos</option>
+                                <option value="6">5 a 6 anos</option>
+                                <option value="7">6 a 7 anos</option>
+                                <option value="8">7 a 8 anos</option>
+                                <option value="9">8 a 9 anos</option>
+                                <option value="10">9 a 10 anos</option>
+                                <option value="11">10 a 11 anos</option>
+                                <option value="12">11 a 12 anos</option>
+                                <option value="13">12 a 13 anos</option>
+                                <option value="14">13 a 14 anos</option>
+                                <option value="15">14 a 15 anos</option>
+                                <option value="16">Mais de 15 anos</option>
+                            </select>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row_inner">
+                    <fieldset>
+                        <legend>Cilindrada (cc)</legend>
+                        <input type="number" id="escolhaCilindrada">
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row flex">
+                <div class="row_inner">
+                    <fieldset>
+                        <legend>Tipo de Combustível</legend>
+                        <select id="escolhaCombustivel">
+                            <option selected disabled>Selecione</option>
+                            <option value="gasolina">Gasolina</option>
+                            <option value="gasoleo">Gasóleo</option>
+                        </select>
+                    </fieldset>
+                </div>
+                <div class="row_inner">
+                    <fieldset>
+                        <legend>Particulas</legend>
+                        <select id="escolhaParticulas">
+                            <option>Selecione</option>
+                            <option value="menos">
+                                < 0.001 g/km</option>
+                            <option value="mais">>= 0.001 g/km</option>
+                        </select>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row flex">
+                <div class="row_inner">
+                    <fieldset>
+                        <legend>Tipo de testes C0₂</legend>
+                        <select id="escolhaTestes">
+                            <option disabled selected>Selecione</option>
+                            <option value="nedc">NEDC</option>
+                            <option value="wltp">WLTP</option>
+                        </select>
+                    </fieldset>
+                </div>
+                <div class="row_inner">
+                    <fieldset>
+                        <legend>Emissões Gases C0₂</legend>
+                        <input type="number" id="escolhaCO2">
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <button id="calcularISV" onclick="calcularISV()">Simular cálculo ISV</button>
+            </div>
+        </section>
+        <section class="resultado">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="3" style="text-align: left; text-transform: uppercase;">Tabela de ISV Aplicável
+                        </th>
+                        <!--<th>Cálculos</th>
+                        <th>% aplicável</th>-->
+                        <th style="text-align: right;">Montante</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-transform: uppercase;">1 Componente Cilindrada</td>
+                        <td></td>
+                        <td></td>
+                        <td id="mostraPrecoCilindrada">0</td>
+                    </tr>
+                    <tr>
+                        <td style="text-transform: uppercase;">2 Componente Ambiental</td>
+                        <td></td>
+                        <td></td>
+                        <td id="mostraPrecoCO2">0</td>
+                    </tr>
+                    <tr>
+                        <td style="text-transform: uppercase;">3 Taxa Aplicável da Tabela</td>
+                        <td></td>
+                        <td></td>
+                        <td id="mostraTaxaAplicavel">0</td>
+                    </tr>
+                    <tr>
+                        <td style="text-transform: uppercase;">4 Redução de Anos de Uso</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="pl55" style="text-transform: uppercase;">Componente Cilindrada</td>
+                        <td></td>
+                        <td></td>
+                        <td id="mostraReducaoCilindrada">0</td>
+                    </tr>
+                    <tr>
+                        <td class="pl55" style="text-transform: uppercase;">Componente Ambiental</td>
+                        <td></td>
+                        <td></td>
+                        <td id="mostraReducaoCO2">0</td>
+                    </tr>
+                    <tr>
+                        <td style="text-transform: uppercase;">Agravamento de Partículas</td>
+                        <td></td>
+                        <td></td>
+                        <td id="mostraAgravamentoParticulas">0</td>
+                    </tr>
+                    <tr>
+                        <td style="text-transform: uppercase;">Redução de Anos de Uso</td>
+                        <td></td>
+                        <td></td>
+                        <td id="mostraReducaoParticulas">0</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td style="text-transform: uppercase;" colspan="3">Total ISV = [ 3 - 4 + 5 - 6 ]</td>
+                        <td id="mostraPrecoFinal" style="text-align: right;">0</td>
+                    </tr>
+                </tfoot>
+            </table>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
