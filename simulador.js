@@ -234,6 +234,18 @@ var calcularISV = function () {
         return pfMostraPrecoFinal;
     }
 
+    var aparecerResultados = function () {
+
+        calcularISVBtn.addEventListener("click", function () {
+            var mostrarTabelaResultados = document.getElementById("tabelaResultados");
+            if (aparecerResultados) {
+                mostrarTabelaResultados.style.display = "block"
+            } else {
+                mostrarTabelaResultados.style.display = "none"
+            }
+        })
+    }
+
     calcularISVBtn.addEventListener("click", function () {
         calcularCilindrada();
         calcularCO2();
@@ -241,6 +253,7 @@ var calcularISV = function () {
         calcularReducaoAnosDeUso();
         calcularAgravamentoDeParticulas();
         calcularReducaoAgravamentoDeParticulas();
+        aparecerResultados();
         calcularValorTotal();
     })
 }
