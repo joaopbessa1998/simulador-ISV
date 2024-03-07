@@ -1,21 +1,33 @@
 function mostrarIdade() {
     if (document.getElementById("escolhaEstado").value === "usado" || document.getElementById("escolhaEstado").value != "novo") {
         document.getElementById("escolhaIdade").style.pointerEvents = "all";
-        document.getElementById("escolhaParticulas").style.pointerEvents = "all"
         document.getElementById("fieldsetChangeIdade").style.border = "2px solid white"
-        document.getElementById("fieldsetChangeParticulas").style.border = "2px solid white"
-
-        console.log("removed")
     } else {
         document.getElementById("escolhaIdade").style.pointerEvents = "none";
-        document.getElementById("escolhaIdade").value = "";
-        document.getElementById("fieldsetChangeParticulas").style.border = "2px solid red";
+        document.getElementById("escolhaIdade").value = "Selecione";
         document.getElementById("fieldsetChangeIdade").style.border = "2px solid red";
-        document.getElementById("escolhaParticulas").style.pointerEvents = "none";
-        document.getElementById("escolhaParticulas").value = "";
-        console.log("added")
     }
 }
+
+function mostrarParticulas() {
+    if (document.getElementById("escolhaCombustivel").value === "diesel" || document.getElementById("escolhaCombustivel").value != "gasolina") {
+        document.getElementById("escolhaParticulas").style.pointerEvents = "all";
+        document.getElementById("fieldsetChangeParticulas").style.border = "2px solid white";
+    } else {
+        document.getElementById("escolhaParticulas").style.pointerEvents = "none";
+        document.getElementById("fieldsetChangeParticulas").style.border = "2px solid red";
+        document.getElementById("escolhaParticulas").value = "Selecione";
+    }
+}
+
+function selecionarEletrico() {
+    if (document.getElementById("escolhaTipo").value === "eletrico") {
+        window.alert("Elétricos não pagam ISV!");
+        document.getElementById("escolhaTipo").value = "Selecione"
+    }
+}
+
+
 
 
 var calcularISV = function () {

@@ -26,8 +26,8 @@
                 <div class="row_inner">
                     <fieldset>
                         <legend>Tipo de Veículo</legend>
-                        <select id="escolhaTipo">
-                            <option selected disabled>Selecione</option>
+                        <select id="escolhaTipo" onchange="selecionarEletrico()">
+                            <option selected disabled value="Selecione">Selecione</option>
                             <option value="ligeiro">Ligeiro de passageiros (100%)</option>
                             <option value="monovolume">Monovolumes de passageiros (40%)</option>
                             <option value="gasNatural">Exclusivamente a gás natural (40%)</option>
@@ -58,7 +58,7 @@
                             style="height: 100%; pointer-events: none; border: 2px solid red;">
                             <legend>Data Registo</legend>
                             <select id="escolhaIdade">
-                                <option disabled selected>Selecione</option>
+                                <option disabled selected value="Selecione">Selecione</option>
                                 <option value="1">Até 1 ano</option>
                                 <option value="2">1 a 2 anos</option>
                                 <option value="3">2 a 3 anos</option>
@@ -90,7 +90,7 @@
                 <div class="row_inner">
                     <fieldset>
                         <legend>Tipo de Combustível</legend>
-                        <select id="escolhaCombustivel">
+                        <select id="escolhaCombustivel" onchange="mostrarParticulas()">
                             <option selected disabled>Selecione</option>
                             <option value="gasolina">Gasolina</option>
                             <option value="gasoleo">Gasóleo</option>
@@ -102,7 +102,7 @@
                         style="height: 100%; pointer-events: none; border: 2px solid red;">
                         <legend>Particulas</legend>
                         <select id="escolhaParticulas">
-                            <option>Selecione</option>
+                            <option disabled selected value="Selecione">Selecione</option>
                             <option value="menos">
                                 < 0.001 g/km</option>
                             <option value="mais">>= 0.001 g/km</option>
