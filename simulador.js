@@ -1,7 +1,7 @@
 function mostrarIdade() {
     if (document.getElementById("escolhaEstado").value === "usado" || document.getElementById("escolhaEstado").value != "novo") {
         document.getElementById("escolhaIdade").style.pointerEvents = "all";
-        document.getElementById("fieldsetChangeIdade").style.border = "2px solid white"
+        document.getElementById("fieldsetChangeIdade").style.border = "2px solid #232323"
     } else {
         document.getElementById("escolhaIdade").style.pointerEvents = "none";
         document.getElementById("escolhaIdade").value = "Selecione";
@@ -12,7 +12,7 @@ function mostrarIdade() {
 function mostrarParticulas() {
     if (document.getElementById("escolhaCombustivel").value === "diesel" || document.getElementById("escolhaCombustivel").value != "gasolina") {
         document.getElementById("escolhaParticulas").style.pointerEvents = "all";
-        document.getElementById("fieldsetChangeParticulas").style.border = "2px solid white";
+        document.getElementById("fieldsetChangeParticulas").style.border = "2px solid #232323";
     } else {
         document.getElementById("escolhaParticulas").style.pointerEvents = "none";
         document.getElementById("fieldsetChangeParticulas").style.border = "2px solid red";
@@ -25,6 +25,11 @@ function selecionarEletrico() {
         window.alert("Elétricos não pagam ISV!");
         document.getElementById("escolhaTipo").value = "Selecione"
     }
+}
+
+function resetInput() {
+    var a = document.getElementById("escolhaCO2");
+
 }
 
 
@@ -146,57 +151,62 @@ var calcularISV = function () {
 
     var calcularReducaoAnosDeUso = function () {
         var escolhaIdade = document.getElementById("escolhaIdade").value; //Retorna o valor inserido no input da idade
+        var escolhaPais = document.getElementById("escolhaPais").value;
         var mostraReducaoCilindrada = document.getElementById("mostraReducaoCilindrada"); //Retorna o <td> com a reducao da cilindrada
         var mostraReducaoCO2 = document.getElementById("mostraReducaoCO2"); //Retorna o <td> com a reducao do CO2
         var importaPrecoCilindrada = calcularCilindrada(); //Importa o preco da cilindrada
         var importaPrecoCO2 = calcularCO2(); //Importa o preco do CO2
 
-        if (escolhaIdade === "1") {
+        if (escolhaIdade === "1" && escolhaPais === "estadoMembro") {
             mostraReducaoCilindrada.innerText = (importaPrecoCilindrada * 0.10).toFixed(2) + '€';
-        } else if (escolhaIdade === "2") {
+        } else if (escolhaIdade === "2" && escolhaPais === "estadoMembro") {
             mostraReducaoCilindrada.innerText = (importaPrecoCilindrada * 0.20).toFixed(2) + '€';
-        } else if (escolhaIdade === "3") {
+        } else if (escolhaIdade === "3" && escolhaPais === "estadoMembro") {
             mostraReducaoCilindrada.innerText = (importaPrecoCilindrada * 0.28).toFixed(2) + '€';
-        } else if (escolhaIdade === "4") {
+        } else if (escolhaIdade === "4" && escolhaPais === "estadoMembro") {
             mostraReducaoCilindrada.innerText = (importaPrecoCilindrada * 0.35).toFixed(2) + '€';
-        } else if (escolhaIdade === "5") {
+        } else if (escolhaIdade === "5" && escolhaPais === "estadoMembro") {
             mostraReducaoCilindrada.innerText = (importaPrecoCilindrada * 0.43).toFixed(2) + '€';
-        } else if (escolhaIdade === "6") {
+        } else if (escolhaIdade === "6" && escolhaPais === "estadoMembro") {
             mostraReducaoCilindrada.innerText = (importaPrecoCilindrada * 0.52).toFixed(2) + '€';
-        } else if (escolhaIdade === "7") {
+        } else if (escolhaIdade === "7" && escolhaPais === "estadoMembro") {
             mostraReducaoCilindrada.innerText = (importaPrecoCilindrada * 0.60).toFixed(2) + '€';
-        } else if (escolhaIdade === "8") {
+        } else if (escolhaIdade === "8" && escolhaPais === "estadoMembro") {
             mostraReducaoCilindrada.innerText = (importaPrecoCilindrada * 0.65).toFixed(2) + '€';
-        } else if (escolhaIdade === "9") {
+        } else if (escolhaIdade === "9" && escolhaPais === "estadoMembro") {
             mostraReducaoCilindrada.innerText = (importaPrecoCilindrada * 0.70).toFixed(2) + '€';
-        } else if (escolhaIdade === "10") {
+        } else if (escolhaIdade === "10" && escolhaPais === "estadoMembro") {
             mostraReducaoCilindrada.innerText = (importaPrecoCilindrada * 0.75).toFixed(2) + '€';
-        } else {
+        } else if (escolhaIdade === "11" || escolhaIdade === "12" || escolhaIdade === "13" || escolhaIdade === "14" || escolhaIdade === "15" || escolhaIdade === "16" && escolhaPais === "estadoMembro") {
             mostraReducaoCilindrada.innerText = (importaPrecoCilindrada * 0.80).toFixed(2) + '€';
+        } else if (escolhaPais != "estadoMembro" || escolhaPais === "paisTerceiro") {
+            mostraReducaoCilindrada.innerText = (0.00).toFixed(2) + '€';
         }
 
-        if (escolhaIdade === "1" || escolhaIdade === "2") {
+        if (escolhaIdade === "1" || escolhaIdade === "2" && escolhaPais === "estadoMembro") {
             mostraReducaoCO2.innerText = (importaPrecoCO2 * 0.10).toFixed(2) + '€';
-        } else if (escolhaIdade === "3" || escolhaIdade === "4") {
+        } else if (escolhaIdade === "3" || escolhaIdade === "4" && escolhaPais === "estadoMembro") {
             mostraReducaoCO2.innerText = (importaPrecoCO2 * 0.20).toFixed(2) + '€';
-        } else if (escolhaIdade === "5" || escolhaIdade === "6") {
+        } else if (escolhaIdade === "5" || escolhaIdade === "6" && escolhaPais === "estadoMembro") {
             mostraReducaoCO2.innerText = (importaPrecoCO2 * 0.28).toFixed(2) + '€';
-        } else if (escolhaIdade === "7") {
+        } else if (escolhaIdade === "7" && escolhaPais === "estadoMembro") {
             mostraReducaoCO2.innerText = (importaPrecoCO2 * 0.35).toFixed(2) + '€';
-        } else if (escolhaIdade === "8" || escolhaIdade === "9") {
+        } else if (escolhaIdade === "8" || escolhaIdade === "9" && escolhaPais === "estadoMembro") {
             mostraReducaoCO2.innerText = (importaPrecoCO2 * 0.43).toFixed(2) + '€';
-        } else if (escolhaIdade === "10") {
+        } else if (escolhaIdade === "10" && escolhaPais === "estadoMembro") {
             mostraReducaoCO2.innerText = (importaPrecoCO2 * 0.52).toFixed(2) + '€';
-        } else if (escolhaIdade === "11" || escolhaIdade === "12") {
+        } else if (escolhaIdade === "11" || escolhaIdade === "12" && escolhaPais === "estadoMembro") {
             mostraReducaoCO2.innerText = (importaPrecoCO2 * 0.60).toFixed(2) + '€';
-        } else if (escolhaIdade === "13") {
+        } else if (escolhaIdade === "13" && escolhaPais === "estadoMembro") {
             mostraReducaoCO2.innerText = (importaPrecoCO2 * 0.65).toFixed(2) + '€';
-        } else if (escolhaIdade === "14") {
+        } else if (escolhaIdade === "14" && escolhaPais === "estadoMembro") {
             mostraReducaoCO2.innerText = (importaPrecoCO2 * 0.70).toFixed(2) + '€';
-        } else if (escolhaIdade === "15") {
+        } else if (escolhaIdade === "15" && escolhaPais === "estadoMembro") {
             mostraReducaoCO2.innerText = (importaPrecoCO2 * 0.75).toFixed(2) + '€';
-        } else {
+        } else if (escolhaIdade === "16" && escolhaPais === "estadoMembro") {
             mostraReducaoCO2.innerText = (importaPrecoCO2 * 0.80).toFixed(2) + '€';
+        } else if (escolhaPais != "estadoMembro" || escolhaPais === "paisTerceiro") {
+            mostraReducaoCO2.innerText = (0.00).toFixed(2) + '€';
         }
 
         var valorReducaoAnosDeUso = parseFloat(mostraReducaoCilindrada.innerText) + parseFloat(mostraReducaoCO2.innerText);
@@ -222,8 +232,6 @@ var calcularISV = function () {
         var escolhaIdade = document.getElementById("escolhaIdade").value; //Retorna o valor inserido no input da idade
         var mostraReducaoParticulas = document.getElementById("mostraReducaoParticulas"); //Retorna o <td> com a reducao do agravamento de particulas
         var importaPrecoParticulas = calcularAgravamentoDeParticulas();
-        console.log("Preço Particulas: ", importaPrecoParticulas);
-        console.log("País: ", escolhaPais);
 
         if (importaPrecoParticulas && escolhaPais === "estadoMembro" && escolhaIdade === "1" || escolhaIdade === "2") {
             mostraReducaoParticulas.innerText = (importaPrecoParticulas * 0.10).toFixed(2) + '€';
@@ -247,8 +255,8 @@ var calcularISV = function () {
             mostraReducaoParticulas.innerText = (importaPrecoParticulas * 0.75).toFixed(2) + '€';
         } else if (importaPrecoParticulas && escolhaPais === "estadoMembro" && escolhaIdade === "16") {
             mostraReducaoParticulas.innerText = (importaPrecoParticulas * 0.80).toFixed(2) + '€';
-        } else if (importaPrecoParticulas && escolhaPais != "estadoMembro" && escolhaIdade === "3" || escolhaIdade === "4") {
-            mostraReducaoParticulas.innerText = (importaPrecoParticulas * 1).toFixed(2) + '€';
+        } else if (escolhaPais != "estadoMembro" || escolhaPais === "paisTerceiro") { //País Terceiro
+            mostraReducaoParticulas.innerText = (0.00).toFixed(2) + '€';
         }
 
         var valorReducaoAgravamentoDeParticulas = parseFloat(mostraReducaoParticulas.innerText);
@@ -267,6 +275,7 @@ var calcularISV = function () {
     }
 
     calcularISVBtn.addEventListener("click", function () {
+
         calcularCilindrada();
         calcularCO2();
         calcularTaxaAplicavel();
@@ -274,5 +283,5 @@ var calcularISV = function () {
         calcularAgravamentoDeParticulas();
         calcularReducaoAgravamentoDeParticulas();
         calcularValorTotal();
-    })
+    });
 }

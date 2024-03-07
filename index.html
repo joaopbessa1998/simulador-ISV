@@ -17,7 +17,7 @@
                     <fieldset>
                         <legend>País da Matrícula do Veículo</legend>
                         <select id="escolhaPais">
-                            <option selected disabled>Selecione</option>
+                            <option selected disabled value="Selecione">Selecione</option>
                             <option value="estadoMembro">Estado-Membro da União Europeia</option>
                             <option value="paisTerceiro">País Terceiro</option>
                         </select>
@@ -47,7 +47,7 @@
                         <fieldset>
                             <legend>Novo / Usado</legend>
                             <select id="escolhaEstado" onchange="mostrarIdade()">
-                                <option selected disabled>Selecione</option>
+                                <option selected disabled value="Selecione">Selecione</option>
                                 <option value="novo">Novo</option>
                                 <option value="usado">Usado</option>
                             </select>
@@ -91,7 +91,7 @@
                     <fieldset>
                         <legend>Tipo de Combustível</legend>
                         <select id="escolhaCombustivel" onchange="mostrarParticulas()">
-                            <option selected disabled>Selecione</option>
+                            <option selected disabled value="Selecione">Selecione</option>
                             <option value="gasolina">Gasolina</option>
                             <option value="gasoleo">Gasóleo</option>
                         </select>
@@ -115,7 +115,7 @@
                     <fieldset>
                         <legend>Tipo de testes C0₂</legend>
                         <select id="escolhaTestes">
-                            <option disabled selected>Selecione</option>
+                            <option disabled selected value="Selecione">Selecione</option>
                             <option value="nedc">NEDC</option>
                             <option value="wltp">WLTP</option>
                         </select>
@@ -129,7 +129,7 @@
                 </div>
             </div>
             <div class="row">
-                <button id="calcularISV" onclick="calcularISV()">Simular cálculo ISV</button>
+                <button id="calcularISV" onclick="calcularISV(), resetInput()">Simular cálculo ISV</button>
             </div>
         </section>
         <section class="resultado" id="tabelaResultados">
@@ -138,58 +138,40 @@
                     <tr>
                         <th colspan="3" style="text-align: left; text-transform: uppercase;">Tabela de ISV Aplicável
                         </th>
-                        <!--<th>Cálculos</th>
-                        <th>% aplicável</th>-->
                         <th style="text-align: right;">Montante</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td style="text-transform: uppercase;">1 Componente Cilindrada</td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="3" style="text-transform: uppercase;">1. Componente Cilindrada</td>
                         <td id="mostraPrecoCilindrada">0</td>
                     </tr>
                     <tr>
-                        <td style="text-transform: uppercase;">2 Componente Ambiental</td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="3" style="text-transform: uppercase;">2. Componente Ambiental</td>
                         <td id="mostraPrecoCO2">0</td>
                     </tr>
                     <tr>
-                        <td style="text-transform: uppercase;">3 Taxa Aplicável da Tabela</td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="3" style="text-transform: uppercase;">3. Taxa Aplicável da Tabela</td>
                         <td id="mostraTaxaAplicavel">0</td>
                     </tr>
                     <tr>
-                        <td style="text-transform: uppercase;">4 Redução de Anos de Uso</td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="3" style="text-transform: uppercase;">4. Redução de Anos de Uso</td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td class="pl55" style="text-transform: uppercase;">Componente Cilindrada</td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="3" class="pl55" style="text-transform: uppercase;">Componente Cilindrada</td>
                         <td id="mostraReducaoCilindrada">0</td>
                     </tr>
                     <tr>
-                        <td class="pl55" style="text-transform: uppercase;">Componente Ambiental</td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="3" class="pl55" style="text-transform: uppercase;">Componente Ambiental</td>
                         <td id="mostraReducaoCO2">0</td>
                     </tr>
                     <tr>
-                        <td style="text-transform: uppercase;">Agravamento de Partículas</td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="3" style="text-transform: uppercase;">5. Agravamento de Partículas</td>
                         <td id="mostraAgravamentoParticulas">0</td>
                     </tr>
                     <tr>
-                        <td style="text-transform: uppercase;">Redução de Anos de Uso</td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="3" style="text-transform: uppercase;">6. Redução de Anos de Uso</td>
                         <td id="mostraReducaoParticulas">0</td>
                     </tr>
                 </tbody>
