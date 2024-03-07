@@ -15,7 +15,9 @@ main {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 30vh;
+    padding-top: 10vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
 }
 
 .noaction {
@@ -27,7 +29,7 @@ main {
     width: 100%;
     max-width: 1200px;
     height: 100%;
-    margin-bottom: 30vh;
+    margin-bottom: 10vh;
 }
 
 .row {
@@ -161,5 +163,29 @@ fieldset input {
 @media (max-width: 899px) {
     .flex {
         flex-direction: column;
+    }
+
+    .resultado {
+        padding: 0;
+        margin-bottom: 10vh;
+    }
+
+    .resultado table thead tr th {
+        padding: 8px;
+    }
+
+    .resultado table tbody tr td,
+    .resultado table tfoot tr td {
+        padding: 8px;
+    }
+
+    .resultado table tbody tr td:first-child,
+    .resultado table tfoot tr td:first-child {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .resultado table tbody tr td.pl55 {
+        padding: 8px 8px 8px 24px !important;
     }
 }
