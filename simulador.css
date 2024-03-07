@@ -18,6 +18,11 @@ main {
     padding-top: 30vh;
 }
 
+.noaction {
+    pointer-events: none;
+    opacity: .5;
+}
+
 .simulador {
     width: 100%;
     max-width: 1200px;

@@ -46,7 +46,7 @@
                     <div>
                         <fieldset>
                             <legend>Novo / Usado</legend>
-                            <select id="escolhaEstado">
+                            <select id="escolhaEstado" onchange="mostrarIdade()">
                                 <option selected disabled>Selecione</option>
                                 <option value="novo">Novo</option>
                                 <option value="usado">Usado</option>
@@ -54,7 +54,8 @@
                         </fieldset>
                     </div>
                     <div>
-                        <fieldset style="height: 100%;">
+                        <fieldset id="fieldsetChangeIdade"
+                            style="height: 100%; pointer-events: none; border: 2px solid red;">
                             <legend>Data Registo</legend>
                             <select id="escolhaIdade">
                                 <option disabled selected>Selecione</option>
@@ -97,7 +98,8 @@
                     </fieldset>
                 </div>
                 <div class="row_inner">
-                    <fieldset>
+                    <fieldset id="fieldsetChangeParticulas"
+                        style="height: 100%; pointer-events: none; border: 2px solid red;">
                         <legend>Particulas</legend>
                         <select id="escolhaParticulas">
                             <option>Selecione</option>
@@ -130,7 +132,7 @@
                 <button id="calcularISV" onclick="calcularISV()">Simular cálculo ISV</button>
             </div>
         </section>
-        <section class="resultado" id="tabelaResultados" style="display: none;">
+        <section class="resultado" id="tabelaResultados">
             <table>
                 <thead>
                     <tr>
