@@ -203,7 +203,7 @@ var calcularISV = function () {
         return valorReducaoAnosDeUso;
     }
 
-    calcularAgravamentoDeParticulas = function () {
+    var calcularAgravamentoDeParticulas = function () {
         var escolhaParticulas = document.getElementById("escolhaParticulas").value; //Retorna o valor inserido no input particulas
         var mostraAgravamentoParticulas = document.getElementById("mostraAgravamentoParticulas"); //Retorna o <td> com o agravamento de particulas
 
@@ -217,7 +217,7 @@ var calcularISV = function () {
         return pfMostraAgravamentoParticulas;
     }
 
-    calcularReducaoAgravamentoDeParticulas = function () {
+    var calcularReducaoAgravamentoDeParticulas = function () {
         var escolhaPais = document.getElementById("escolhaPais").value;
         var escolhaIdade = document.getElementById("escolhaIdade").value; //Retorna o valor inserido no input da idade
         var mostraReducaoParticulas = document.getElementById("mostraReducaoParticulas"); //Retorna o <td> com a reducao do agravamento de particulas
