@@ -157,7 +157,9 @@ var calcularISV = function () {
         var importaPrecoCilindrada = calcularCilindrada(); //Importa o preco da cilindrada
         var importaPrecoCO2 = calcularCO2(); //Importa o preco do CO2
 
-        if (escolhaIdade === "1" && escolhaPais === "estadoMembro") {
+        if (escolhaPais != "estadoMembro" || escolhaPais === "paisTerceiro") {
+            mostraReducaoCilindrada.innerText = (0.00).toFixed(2) + '€';
+        } else if (escolhaIdade === "1" && escolhaPais === "estadoMembro") {
             mostraReducaoCilindrada.innerText = (importaPrecoCilindrada * 0.10).toFixed(2) + '€';
         } else if (escolhaIdade === "2" && escolhaPais === "estadoMembro") {
             mostraReducaoCilindrada.innerText = (importaPrecoCilindrada * 0.20).toFixed(2) + '€';
@@ -179,11 +181,11 @@ var calcularISV = function () {
             mostraReducaoCilindrada.innerText = (importaPrecoCilindrada * 0.75).toFixed(2) + '€';
         } else if (escolhaIdade === "11" || escolhaIdade === "12" || escolhaIdade === "13" || escolhaIdade === "14" || escolhaIdade === "15" || escolhaIdade === "16" && escolhaPais === "estadoMembro") {
             mostraReducaoCilindrada.innerText = (importaPrecoCilindrada * 0.80).toFixed(2) + '€';
-        } else if (escolhaPais != "estadoMembro" || escolhaPais === "paisTerceiro") {
-            mostraReducaoCilindrada.innerText = (0.00).toFixed(2) + '€';
         }
 
-        if (escolhaIdade === "1" || escolhaIdade === "2" && escolhaPais === "estadoMembro") {
+        if (escolhaPais != "estadoMembro" || escolhaPais === "paisTerceiro") {
+            mostraReducaoCO2.innerText = (0.00).toFixed(2) + '€';
+        } else if (escolhaIdade === "1" || escolhaIdade === "2" && escolhaPais === "estadoMembro") {
             mostraReducaoCO2.innerText = (importaPrecoCO2 * 0.10).toFixed(2) + '€';
         } else if (escolhaIdade === "3" || escolhaIdade === "4" && escolhaPais === "estadoMembro") {
             mostraReducaoCO2.innerText = (importaPrecoCO2 * 0.20).toFixed(2) + '€';
@@ -205,8 +207,6 @@ var calcularISV = function () {
             mostraReducaoCO2.innerText = (importaPrecoCO2 * 0.75).toFixed(2) + '€';
         } else if (escolhaIdade === "16" && escolhaPais === "estadoMembro") {
             mostraReducaoCO2.innerText = (importaPrecoCO2 * 0.80).toFixed(2) + '€';
-        } else if (escolhaPais != "estadoMembro" || escolhaPais === "paisTerceiro") {
-            mostraReducaoCO2.innerText = (0.00).toFixed(2) + '€';
         }
 
         var valorReducaoAnosDeUso = parseFloat(mostraReducaoCilindrada.innerText) + parseFloat(mostraReducaoCO2.innerText);
@@ -233,7 +233,9 @@ var calcularISV = function () {
         var mostraReducaoParticulas = document.getElementById("mostraReducaoParticulas"); //Retorna o <td> com a reducao do agravamento de particulas
         var importaPrecoParticulas = calcularAgravamentoDeParticulas();
 
-        if (importaPrecoParticulas && escolhaPais === "estadoMembro" && escolhaIdade === "1" || escolhaIdade === "2") {
+        if (escolhaPais != "estadoMembro" || escolhaPais === "paisTerceiro") {
+            mostraReducaoParticulas.innerText = (0.00).toFixed(2) + '€';
+        } else if (importaPrecoParticulas && escolhaPais === "estadoMembro" && escolhaIdade === "1" || escolhaIdade === "2") {
             mostraReducaoParticulas.innerText = (importaPrecoParticulas * 0.10).toFixed(2) + '€';
         } else if (importaPrecoParticulas && escolhaPais === "estadoMembro" && escolhaIdade === "3" || escolhaIdade === "4") {
             mostraReducaoParticulas.innerText = (importaPrecoParticulas * 0.20).toFixed(2) + '€';
@@ -255,8 +257,6 @@ var calcularISV = function () {
             mostraReducaoParticulas.innerText = (importaPrecoParticulas * 0.75).toFixed(2) + '€';
         } else if (importaPrecoParticulas && escolhaPais === "estadoMembro" && escolhaIdade === "16") {
             mostraReducaoParticulas.innerText = (importaPrecoParticulas * 0.80).toFixed(2) + '€';
-        } else if (escolhaPais != "estadoMembro" || escolhaPais === "paisTerceiro") { //País Terceiro
-            mostraReducaoParticulas.innerText = (0.00).toFixed(2) + '€';
         }
 
         var valorReducaoAgravamentoDeParticulas = parseFloat(mostraReducaoParticulas.innerText);
